@@ -1,8 +1,20 @@
+// import HospedagensSection from "./pages/Hotel";
+// import { HotelsPage } from "./pages/HotelsPage";
+
+// import MapArea from "./components/MapArea";
+import Hotels from "./pages/Hotels";
+
+
+// import { HotelsPage } from "./pages/HotelsPage";
+
+
 export default function App() {
   return (
     <>
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <h1 className="text-4xl font-bold text-blue-600">Hello World</h1>
+      <div className="f min-h-screen bg-gray-100">
+        <Hotels />
+        {/* <MapArea /> */}
+        {/* <HotelsPage /> */}
       </div>
     </>
   );
