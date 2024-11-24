@@ -1,13 +1,10 @@
-
-import Hotels from "./pages/Hotels";
+import { BrowserRouter as Router } from 'react-router-dom';
+import AppRoutes from './router/AppRouter';
 
 export default function App() {
   return (
-    <>
-      <div className="f min-h-screen bg-gray-100">
-        <Hotels />
-      </div>
-    </>
+    <Router>
+     <AppRoutes />
+    </Router>
   );
 }
-
