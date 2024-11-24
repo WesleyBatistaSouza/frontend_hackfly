@@ -1,22 +1,20 @@
 import { Routes, Route } from "react-router-dom";
-import LoginCadastro
+import LoginCadastro from "../components/logincadastro";
 // import Home from "../pages/home/home";
 // import Login from "../pages/login/login";
 // import Signup from "../pages/signup/signup";
-import SearchHotels from "../pages/searchHotels/searchHotels";
+import Hotels from "../pages/Hotels";
 
 const AppRoutes = () => {
   return (
     <Routes>
+      <Route path="/" index element={<Hotels />} />
 
       {/* Rota de Login */}
-      <Route path="/login" element={<Loginca />} />
-
-      {/* Rota de Signup */}
-      {/* <Route path="/signup" element={<Signup />} /> */}
+      <Route path="/Cadaster" element={<LoginCadastro />} />
 
       {/* Rota para buscar hotéis */}
-      <Route path="/search-hotels" element={<SearchHotels />} />
+      <Route path="/hotels" element={<Hotels />} />
     </Routes>
   );
 };

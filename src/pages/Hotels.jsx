@@ -81,15 +81,6 @@ export default function Hotels() {
       price: 300,
       rating: 5,
     },
-    {
-      id: 3,
-      image: "https://via.placeholder.com/150",
-      title: "Hotel C",
-      location: "Belo Horizonte, MG",
-      amenities: ["Wi-Fi", "Bar", "Café da manhã incluso"],
-      price: 220,
-      rating: 3,
-    },
   ];
 
 
