@@ -99,7 +99,7 @@ export default function Hotels() {
       
 
       {/* Lista de Hotéis */}
-      <div className="bg-gray-100 min-h-screen flex flex-col items-center gap-6 py-8">
+      <div className="bg-gray-100 min-h-screen w-full flex flex-col items-start gap-1 py-8">
         { hotels.map((hotel) => (
           <div key={hotel.id} className="w-1/2">
             <HotelCard
