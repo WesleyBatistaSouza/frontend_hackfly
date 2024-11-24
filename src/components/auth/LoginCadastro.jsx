@@ -30,7 +30,7 @@ const LoginCadastro = () => {
   return (
     <div className="min-h-screen bg-blue-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-lg shadow-lg flex w-full max-w-5xl">
-        {/* Left Side - Image */}
+        
         <div className="hidden lg:block lg:w-1/2 rounded-l-lg relative overflow-hidden">
   <img 
     src="/assets/background.png" 
@@ -47,9 +47,9 @@ const LoginCadastro = () => {
   </div>
 </div>
 
-        {/* Right Side - Form */}
+        
         <div className="w-full lg:w-1/2 p-8">
-          {/* Tabs */}
+          
           <div className="flex mb-8 border-b">
             <button
               onClick={() => setActiveTab('login')}
