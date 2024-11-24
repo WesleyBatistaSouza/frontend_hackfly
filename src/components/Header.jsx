@@ -41,7 +41,7 @@ function Header() {
         </div>
       </div>
       
-      <div className="w-full border rounded-md m-4 p-2 bg-gray-300 flex justify-between">
+      <div className="w-full border rounded-md m-4 p-2 bg-gray-300 flex flex-wrrap justify-between">
         <div className="flex justify-center items-center w-72">
           <input
             className="bg-transparent rounded-md outline-none"
