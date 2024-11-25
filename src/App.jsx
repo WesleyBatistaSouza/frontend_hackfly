@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import LoginCadastro from './components/auth/LoginCadastro';
+import LoginCadastro from './components/auth/logincadastro';
 import HotelRegistration from './components/hotel/HotelRegistration';
 import Hotels from './pages/Hotels';
 
