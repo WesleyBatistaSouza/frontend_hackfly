@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import LoginCadastro from './components/auth/LoginCadastro';
 import HotelRegistration from './components/hotel/HotelRegistration';
+import Hotels from './pages/Hotels';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LoginCadastro />} />
           <Route path="/hotel-registration" element={<HotelRegistration />} />
+          <Route path="/hotels" element={<Hotels />} />
         </Routes>
       </div>
     </Router>

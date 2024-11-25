@@ -1,7 +1,6 @@
-import { useState } from "react";
-import { Eye, EyeOff, Mail, Lock, User, Building2 } from "lucide-react";
-
-const baseUrl = "";
+import { useState } from 'react';
+import { Eye, EyeOff, Mail, Lock, User, Building2 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const LoginCadastro = () => {
   const [activeTab, setActiveTab] = useState("login");
@@ -12,8 +11,11 @@ const LoginCadastro = () => {
     password: "",
     companyEmail: "",
   });
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setFormData({
@@ -139,8 +141,7 @@ const LoginCadastro = () => {
             onClick={handleGoogleLogin}
             className="w-full mb-6 flex items-center justify-center gap-2 bg-white border border-gray-300 p-2 rounded-md hover:bg-gray-50 transition-colors"
           >
-            <svg className="w-5 h-5" viewBox="0 0 24 24">
-            </svg>
+            <svg className="w-5 h-5" viewBox="0 0 24 24"></svg>
             Entrar com Google
           </button>
 
