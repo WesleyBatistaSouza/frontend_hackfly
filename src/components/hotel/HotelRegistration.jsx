@@ -20,6 +20,8 @@ const HotelRegistration = () => {
     amenities: []
   });
 
+  const [errors, setErrors] = useState({});
+
   const amenitiesOptions = [
     'Wi-Fi', 'Piscina', 'Academia', 'Restaurante', 
     'Estacionamento', 'Ar Condicionado', 'Room Service'
@@ -41,14 +43,52 @@ const HotelRegistration = () => {
     }));
   };
 
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.name || formData.name.length < 3 || formData.name.length > 255) {
+      newErrors.name = "O nome do hotel é obrigatório e deve ter no mínimo 3 caracteres.";
+    }
+    if (formData.hotelChain && formData.hotelChain.length > 200) {
+      newErrors.hotelChain = "O nome da rede hoteleira não pode exceder 200 caracteres.";
+    }
+    if (!formData.password || formData.password.length < 6 || formData.password.length > 100) {
+      newErrors.password = "A senha deve ter no mínimo 6 caracteres.";
+    }
+    if (!formData.cnpj || formData.cnpj.length !== 18) {
+      newErrors.cnpj = "O CNPJ é obrigatório e deve ter 18 caracteres.";
+    }
+    if (!formData.address || formData.address.length < 5 || formData.address.length > 255) {
+      newErrors.address = "O endereço é obrigatório e deve ter no mínimo 5 caracteres.";
+    }
+    if (!formData.city || formData.city.length < 3 || formData.city.length > 255) {
+      newErrors.city = "A cidade é obrigatória e deve ter no mínimo 3 caracteres.";
+    }
+    if (!formData.state || formData.state.length < 2 || formData.state.length > 255) {
+      newErrors.state = "O estado é obrigatório e deve ter no mínimo 2 caracteres.";
+    }
+    if (!formData.latitude || !formData.longitude) {
+      newErrors.coordinates = "Latitude e Longitude são obrigatórios.";
+    }
+    if (!formData.description || formData.description.length < 1 || formData.description.length > 500) {
+      newErrors.description = "A descrição deve ter entre 5 e 500 caracteres.";
+    }
+
+    setErrors(newErrors);
+
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+
+    if (validateForm()) {
+      console.log('Form submitted:', formData);
+    }
   };
 
   return (
     <div className="min-h-screen bg-blue-50 flex">
-      {/* Left Side - Image */}
       <div className="hidden lg:block w-1/2 relative">
         <img 
           src="/assets/background2.jpg" 
@@ -57,7 +97,6 @@ const HotelRegistration = () => {
         />
       </div>
 
-      
       <div className="w-full lg:w-1/2 min-h-screen overflow-y-auto bg-white p-8">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-2xl font-bold text-gray-900 mb-8">Cadastro de Hotel</h2>
@@ -65,9 +104,7 @@ const HotelRegistration = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
-                Nome do Hotel
-              </label>
+              <label className="block text-sm font-medium text-gray-700">Nome do Hotel</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <Building2 className="h-5 w-5 text-blue-400" />
@@ -82,13 +119,10 @@ const HotelRegistration = () => {
                   maxLength={255}
                 />
               </div>
+              {errors.name && <p className="text-red-500 text-xs">{errors.name}</p>}
             </div>
-
-            
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
-                Rede Hoteleira
-              </label>
+              <label className="block text-sm font-medium text-gray-700">Rede Hoteleira</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <Building className="h-5 w-5 text-blue-400" />
@@ -103,13 +137,12 @@ const HotelRegistration = () => {
                   maxLength={255}
                 />
               </div>
+              {errors.hotelChain && <p className="text-red-500 text-xs">{errors.hotelChain}</p>}
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">
-                  Estrelas
-                </label>
+                <label className="block text-sm font-medium text-gray-700">Estrelas</label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <Star className="h-5 w-5 text-blue-400" />
@@ -128,9 +161,7 @@ const HotelRegistration = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">
-                  CNPJ
-                </label>
+                <label className="block text-sm font-medium text-gray-700">CNPJ</label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <Building2 className="h-5 w-5 text-blue-400" />
@@ -145,14 +176,12 @@ const HotelRegistration = () => {
                     maxLength={18}
                   />
                 </div>
+                {errors.cnpj && <p className="text-red-500 text-xs">{errors.cnpj}</p>}
               </div>
             </div>
 
-            
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
-                Endereço
-              </label>
+              <label className="block text-sm font-medium text-gray-700">Endereço</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <MapPin className="h-5 w-5 text-blue-400" />
@@ -167,13 +196,12 @@ const HotelRegistration = () => {
                   maxLength={255}
                 />
               </div>
+              {errors.address && <p className="text-red-500 text-xs">{errors.address}</p>}
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">
-                  Cidade
-                </label>
+                <label className="block text-sm font-medium text-gray-700">Cidade</label>
                 <input
                   type="text"
                   name="city"
@@ -182,12 +210,11 @@ const HotelRegistration = () => {
                   className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Cidade"
                 />
+                {errors.city && <p className="text-red-500 text-xs">{errors.city}</p>}
               </div>
 
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">
-                  Estado
-                </label>
+                <label className="block text-sm font-medium text-gray-700">Estado</label>
                 <input
                   type="text"
                   name="state"
@@ -196,14 +223,13 @@ const HotelRegistration = () => {
                   className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Estado"
                 />
+                {errors.state && <p className="text-red-500 text-xs">{errors.state}</p>}
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">
-                  Latitude
-                </label>
+                <label className="block text-sm font-medium text-gray-700">Latitude</label>
                 <input
                   type="text"
                   name="latitude"
@@ -215,9 +241,7 @@ const HotelRegistration = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">
-                  Longitude
-                </label>
+                <label className="block text-sm font-medium text-gray-700">Longitude</label>
                 <input
                   type="text"
                   name="longitude"
@@ -230,9 +254,7 @@ const HotelRegistration = () => {
             </div>
 
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
-                Descrição
-              </label>
+              <label className="block text-sm font-medium text-gray-700">Descrição</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 pt-2 pointer-events-none">
                   <Info className="h-5 w-5 text-blue-400" />
@@ -246,12 +268,11 @@ const HotelRegistration = () => {
                   rows={3}
                 />
               </div>
+              {errors.description && <p className="text-red-500 text-xs">{errors.description}</p>}
             </div>
 
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
-                Senha
-              </label>
+              <label className="block text-sm font-medium text-gray-700">Senha</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <Eye className="h-5 w-5 text-blue-400" />
@@ -276,13 +297,11 @@ const HotelRegistration = () => {
                   )}
                 </button>
               </div>
+              {errors.password && <p className="text-red-500 text-xs">{errors.password}</p>}
             </div>
 
-            
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
-                Comodidades
-              </label>
+              <label className="block text-sm font-medium text-gray-700">Comodidades</label>
               <div className="grid grid-cols-2 gap-2">
                 {amenitiesOptions.map(amenity => (
                   <label key={amenity} className="flex items-center space-x-2">
@@ -298,11 +317,8 @@ const HotelRegistration = () => {
               </div>
             </div>
 
-            
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-700">
-                Imagem Principal
-              </label>
+              <label className="block text-sm font-medium text-gray-700">Imagem Principal</label>
               <div className="flex items-center justify-center w-full">
                 <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
                   <div className="flex flex-col items-center justify-center pt-5 pb-6">
