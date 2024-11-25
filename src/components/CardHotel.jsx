@@ -1,24 +1,3 @@
-// name         String        @db.VarChar(255)
-//   stars        Int
-//   latitude     String        @db.VarChar(255)
-//   longitude    String        @db.VarChar(255)
-//   description  String?       @db.Text
-//   address      String        @db.VarChar(255)
-//   district     String?       @db.VarChar(255)
-//   city         String        @db.VarChar(255)
-//   state        String        @db.VarChar(255)
-//   country      String        @db.VarChar(255)
-//   placeId      String        @db.VarChar(255)
-//   password     String        @db.VarChar(255)
-//   thumb        String?       @db.VarChar(255)
-//   images       Json?
-//   amenities    Json?
-//   pois         Json?
-//   reviews      Json?
-//   cnpj         String?       @db.VarChar(20)
-//   category    String         @db.VarChar 
-
-
 function HotelCard({
   image,
   title,
