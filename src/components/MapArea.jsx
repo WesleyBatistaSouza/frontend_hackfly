@@ -30,13 +30,11 @@ const MapArea = () => {
   ];
 
   const [hotels, setHotels] = useState([]);
-  const [mapCenter, setMapCenter] = useState([-23.55052, -46.633308]); // Inicialmente São Paulo
+  const [mapCenter, setMapCenter] = useState([-23.55052, -46.633308]);
 
   useEffect(() => {
-    // Simula a busca de dados da API
     setHotels(hotelsData);
 
-    // Centraliza o mapa com base nos hotéis disponíveis
     if (hotelsData.length > 0) {
       const firstHotel = hotelsData[0];
       setMapCenter([firstHotel.latitude, firstHotel.longitude]);

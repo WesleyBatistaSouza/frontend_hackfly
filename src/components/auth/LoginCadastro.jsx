@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Eye, EyeOff, Mail, Lock, User, Building2 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const LoginCadastro = () => {
   const [activeTab, setActiveTab] = useState('login');
@@ -11,13 +12,22 @@ const LoginCadastro = () => {
     companyEmail: ''
   });
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    if(formData.email && formData.password) {
+      console.log('Form submitted:', formData);
+      navigate('/hotels');
+    } else {
+      alert('Preencha todos os campos obrigátorios!')
+    }
+
   };
 
   const handleGoogleLogin = () => {
     console.log('Login com Google');
+    navigate('/hotels')
   };
 
   const handleInputChange = (e) => {
