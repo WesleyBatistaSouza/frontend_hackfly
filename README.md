@@ -58,11 +58,11 @@ Aplicação desenvolvida com **React** e estilizada com **TailwindCSS**.
 
 2. Instale as dependências:
    ```bash
-npm install
+   npm install
 
 3. Inicie a aplicação:
    ```bash
-npm start
+   npm start
 
 4. Acesse a aplicação no navegador:
 http://localhost:3000
