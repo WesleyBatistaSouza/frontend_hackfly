@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Heart, XCircle } from "lucide-react";
+import { Heart, XCircle, ArrowRightCircle, ArrowLeftCircle } from "lucide-react";
 import Header from "../components/Header";
 import image0 from "../assets/image0.png";
 import image1 from "../assets/image1.png";
@@ -154,8 +154,8 @@ const Hotels = () => {
         </div>
 
         {selectedHotel && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white rounded-lg p-6 max-w-2xl w-full relative">
+          <div className=" inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 fixed">
+            <div className="bg-white rounded-lg p-6 max-w-2xl w-9/12 relative">
               <button
                 className="absolute top-2 right-2 text-gray-400"
                 onClick={closeModal}
@@ -170,14 +170,14 @@ const Hotels = () => {
               <img
                 src={selectedHotel.photos[currentPhotoIndex]}
                 alt={selectedHotel.title}
-                className="rounded-md mb-4"
+                className="rounded-md mb-4 max-w-lg"
               />
-              <div className="flex justify-between">
+              <div className="flex items-center justify-between">
                 <button onClick={handlePrevPhoto} className="text-blue-500">
-                  Prev
+                <ArrowLeftCircle size={24} />
                 </button>
                 <button onClick={handleNextPhoto} className="text-blue-500">
-                  Next
+                <ArrowRightCircle size={24} />
                 </button>
               </div>
               <h3 className="text-xl font-semibold mt-4">Descrição</h3>
